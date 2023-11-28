@@ -1,0 +1,56 @@
+@use '../index.scss' as app;
+
+.login-section {
+    @include app.displayflexcolumn(25px);
+    margin: auto;
+    // min-width: 40vw;
+    max-width: 550px;
+    height: 100vh;
+
+    .container {
+        width: 100%;
+        .icon {
+            cursor: default;
+        }
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        background: #fff;
+        // height: 80vh;
+        padding: 40px;
+        border-radius: 20px;
+        // @include app.boxshadow();
+
+        p {
+            color: app.$textColor;
+        }
+
+        .input {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            position: relative;
+
+            #forgot-password {
+                font-size: 11px;
+                position: absolute;
+                left: 75%;
+                color: app.$btnBgColor;
+                text-decoration: underline;
+                cursor: pointer;
+                transition: all .3s ease;
+            
+                &:hover {
+                    color: red;
+                }
+            }
+
+            #icon-see1 {
+                position: absolute;
+                top: 54%;
+                left: 90%;
+                cursor: pointer;
+            }
+        }
+    }
+}

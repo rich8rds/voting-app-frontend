@@ -1,0 +1,115 @@
+@use '../index.scss' as app;
+
+:root{
+    --dark-blue-color:  #2F80ED;
+    --light-blue-color: #BCDCFF;
+    --milk-white: #BCDCFF;
+    --black-color: black;
+    --lightgray-color: #D4D4D4;
+    --neutral-color: #404040;
+    --white-color:  white;
+    --transparent-color: #f5f5f5;
+    
+  }
+
+.btn-signup {
+    padding: 15px;
+    border: none;
+    border-radius: 6px;
+    width: 100%;
+    font-size: 15px;
+}
+.transparent-btn {
+    background: transparent;
+    border: 1px solid var(--lightgray-color);
+}
+.opaque-btn {
+    background-color: var(--dark-blue-color);
+    color: white;
+    font-weight: bold;
+
+}
+
+.disable-btn {
+    pointer-events: none;
+    background-color: var(--lightgray-color);
+    color: var(--neutral-color);
+}
+
+.sign-up {
+    @include app.displayflexcolumn(25px);
+    margin: auto;
+    // width: 40vw;
+    min-width: 400px;
+    min-height: 100vh;
+
+
+    .container {
+        transform: translateY(2%) ;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        background: #fff;
+        padding: 30px 40px;
+        border-radius: 20px;
+        width: 700px;
+        @include app.boxshadow();
+   
+        @media (max-width: 701px) {
+            width: 80%;
+            transform: translateY(7%) ;
+        }
+
+        .input {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            position: relative;
+
+          
+            .address, .name {
+                display: flex;
+                gap: 10px;
+
+                .phoneNumber-div, .email-div {
+                    width: 100%;
+                    input {
+                        margin-bottom: 4px;
+                    }
+                }
+
+            }
+
+            .name, .address {
+                @media (max-width: 700px) {
+                    display: block;
+                    width: 100%;
+                    
+                    .phoneNumber-div, .email-div, input {
+                        width: 100%;
+                        margin-bottom: 20px;
+                    }
+                }
+            }
+
+            #icon-see1 {
+                position: absolute;
+                top: 24%;
+                left: 94%;
+                cursor: pointer;
+            }
+            #icon-see2 {
+                position: absolute;
+                top: 24%;
+                left: 94%;
+                cursor: pointer;
+            }
+        }
+
+        .login-link-div {
+            p {
+                text-align: center;
+            }
+        }
+    }
+}

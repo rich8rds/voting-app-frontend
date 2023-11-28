@@ -6,7 +6,7 @@ import { io } from "socket.io-client";
 import { decodeJwt } from '../security/roleUrlRouter'
 
 
-const socket = io("http://localhost:4001")
+const socket = io("http://votes-app.onrender.com")
 
 export interface votesPayload {
     contestantId: string,
@@ -14,27 +14,6 @@ export interface votesPayload {
     lastname: string,
     count: number
 }
-
-type VotesContextType = {
-    votes: votesPayload,
-    setVotes: React.Dispatch<React.SetStateAction<votesPayload>>
-    totalVotesCount: number,
-    setTotalVotes: React.Dispatch<React.SetStateAction<number>>,
-    contestants: contestant[],
-    setContestants: React.Dispatch<React.SetStateAction<contestant[]>>,
-    GetAllVotes: any
-    VoteForContestant: any,
-    isSelected: boolean,
-    setIsSelected: React.Dispatch<React.SetStateAction<boolean>>,
-    selectedId: string,
-    setSelectedId: React.Dispatch<React.SetStateAction<string>>,
-}
-
-export const VotesContext = createContext<VotesContextType>({} as VotesContextType)
-
-type VotesProviderProps = {
-    children: ReactNode;
-};
 
 export interface contestant {
     _id: string,
@@ -45,6 +24,27 @@ export interface contestant {
     description: string,
     numberOfVotes: number
 }
+
+export type VotesContextType = {
+    votes: votesPayload[],
+    setVotes: React.Dispatch<React.SetStateAction<votesPayload[]>>
+    totalVotesCount: number,
+    setTotalVotes: React.Dispatch<React.SetStateAction<number>>,
+    contestants: contestant[],
+    setContestants: React.Dispatch<React.SetStateAction<contestant[]>>,
+    GetAllVotes: any
+    VoteForContestant: any,
+    // isSelected: boolean,
+    // setIsSelected: React.Dispatch<React.SetStateAction<boolean>>,
+    // selectedId: string,
+    // setSelectedId: React.Dispatch<React.SetStateAction<string>>,
+}
+
+export const VotesContext = createContext<VotesContextType>({} as VotesContextType)
+
+type VotesProviderProps = {
+    children: ReactNode;
+};
 
 export const VotesProvider = ({ children }: VotesProviderProps) => {
     const navigate = useNavigate()
@@ -95,7 +95,12 @@ export const VotesProvider = ({ children }: VotesProviderProps) => {
 
 
     const VoteForContestant = (id: string): any => {
-        const token = localStorage.getItem('token')
+        const token: string| null = localStorage.getItem('token')
+        if(!token) {
+            notifyError('Choose a contestant first')
+            return
+        }
+
         const { _id } = decodeJwt(token) //voter's Id
 
         if (!id) {
@@ -129,6 +134,8 @@ export const VotesProvider = ({ children }: VotesProviderProps) => {
             totalVotesCount,
             GetAllVotes,
             VoteForContestant,
+            setVotes, 
+            setTotalVotes,
         }}>
             {children}
         </VotesContext.Provider>

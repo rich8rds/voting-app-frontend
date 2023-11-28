@@ -17,7 +17,7 @@ const Navbar = () => {
 
       <div className="middle">
         <Link className="nav-link" to="/">Votes</Link>
-        { email ? 
+        { email.length > 0 ? 
           <Link className="nav-link remove-border" onClick={handleLogout} to="/login">Logout</Link> :
           <Link className="nav-link remove-border" to="/login">Login</Link> 
         }

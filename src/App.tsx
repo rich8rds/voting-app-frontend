@@ -3,6 +3,7 @@ import Signin from "./pages/Signin"
 import Signup from "./pages/Signup"
 import Votes from "./pages/Votes"
 import Page404 from './pages/Page404'
+import Home from './pages/Home'
 
 
 function App() {
@@ -12,7 +13,8 @@ function App() {
       <Routes>
         {/**PROTECT ROUTE */}
         {/* <Route element={ <RequireAuth /> } > */}
-          <Route path="/" index element={<Votes />} />
+        <Route path='/' index element={<Home />} />
+          <Route path="/votes" element={<Votes />} />
         {/* </Route> */}
           <Route path="/login" element={<Signin />} />
           <Route path="/register" element={<Signup />} />

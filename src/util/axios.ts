@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // const BASE_URL: String  = 'http://localhost:4000/api/'
-const BASE_URL: String  = 'https://my-votes.onrender.com'
+const BASE_URL: String  = 'https://votes-app.onrender.com'
 
 const config: {} = {
     headers: {

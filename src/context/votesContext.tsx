@@ -6,7 +6,7 @@ import { io } from "socket.io-client";
 import { decodeJwt } from '../security/roleUrlRouter'
 
 
-const socket = io("http://votes-api.onrender.com")
+const socket = io("http://votes-api.onrender.com:4001")
 
 export interface votesPayload {
     contestantId: string,

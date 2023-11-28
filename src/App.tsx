@@ -13,7 +13,7 @@ function App() {
       <Routes>
         {/**PROTECT ROUTE */}
         {/* <Route element={ <RequireAuth /> } > */}
-        <Route path='/' index element={<Home />} />
+          <Route path='/' index element={<Home />} />
           <Route path="/votes" element={<Votes />} />
         {/* </Route> */}
           <Route path="/login" element={<Signin />} />

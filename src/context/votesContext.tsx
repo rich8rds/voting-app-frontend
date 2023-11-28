@@ -2,11 +2,11 @@ import { createContext, useState, ReactNode, useEffect } from "react";
 import { apiGet, apiPost } from "../util/axios";
 import { useNavigate } from "react-router-dom";
 import { notifyWarning, notifySuccess, notifyError } from '../notification/Toastify'
-import { io } from "socket.io-client";
+// import { io } from "socket.io-client";
 import { decodeJwt } from '../security/roleUrlRouter'
 
 
-const socket = io("http://votes-api.onrender.com:4001")
+// const socket = io("https://votes-api.onrender.com")
 
 export interface votesPayload {
     contestantId: string,
@@ -52,12 +52,12 @@ export const VotesProvider = ({ children }: VotesProviderProps) => {
     const [totalVotesCount, setTotalVotes] = useState<number>(0)
     const [contestants, setContestants] = useState<contestant[] | []>([])
 
-    useEffect(() => {
-        socket.on('vote', () => {
-            GetAllVotes()
-            notifySuccess('New vote!')
-        })
-    }, [socket])
+    // useEffect(() => {
+    //     socket.on('vote', () => {
+    //         GetAllVotes()
+    //         notifySuccess('New vote!')
+    //     })
+    // }, [socket])
 
     useEffect(() => {
         apiGet('users/contestants')

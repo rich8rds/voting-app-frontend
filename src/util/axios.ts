@@ -21,4 +21,5 @@ const apiPut = (url: string, data: {}) => {
     return axios.put(`${BASE_URL}${url}`, data, config);
 };
 
+
 export { apiGet, apiPost, apiPut }

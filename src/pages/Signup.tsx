@@ -78,16 +78,13 @@ function Signup(): JSX.Element {
     }
 
 
-    const handleSocialLogin = () => {
-
-    }
-  
     function navigateToUrl(url: string){
       window.location.href = url;
     }
     
     async function auth() {
-      const response = await fetch('http://localhost:4000/api/request', {method:'post'});
+        const BASE_URL: String  = 'https://votes-app.onrender.com'
+      const response = await fetch(`${BASE_URL}api/request`, {method:'post'});
       const data = await response.json();
       console.log(data);
       navigateToUrl(data.url);
